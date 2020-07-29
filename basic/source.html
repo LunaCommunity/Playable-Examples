@@ -1,0 +1,61 @@
+<html>
+<head>
+    <style type="text/css">
+        /* Basic CSS stylesheet for our playable */
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: black;
+        }
+
+        #button {
+            display: block; 
+            position: absolute; 
+            top: 50%; 
+            left: 50%; 
+            width: 100px;
+            height: 100px;
+            transform: translateX(-50%) translateY(-50%)
+        }
+    </style>
+</head>
+<body>
+    <!-- main script of the playable -->
+    <script type="text/javascript">
+        /**
+         * Main entrypoint for the playable. Please make sure that all the startup
+         * is performed strictly within this function.
+         */
+        function startGame() {
+            // to show off dynamic nature of the playable, we create a button
+            // via JS code here and append it to the body. In real world, a graphical engine,
+            // like Pixi.js or Three.js can used – in this case, it should perform scene
+            // setup and launch in here.
+            const body = document.body;
+            const button = document.createElement( 'button' );
+            button.innerText = 'Hello there!';
+            button.id = 'button';
+
+            // attach onclick handler to react to button press
+            button.onclick = function () { 
+                // use unified interface to transition to the store. Specifics of each ad network
+                // will be automatically handled by Luna Playground.
+                Luna.Unity.Playable.InstallFullGame() 
+            };
+
+            // put the button inside the body
+            body.appendChild( button );
+        }
+
+        // check if Luna is defined in global namespace
+        if ( 'Luna' in window ) {
+            // it is - nothing to do, the startGame() will be invoked when needed
+            log( 'window.Luna is set - startGame() will be called automatically' );
+        } else {
+            // it is not - probably a development build, invoke startGame() manually
+            startGame();
+        }
+    </script>
+</body>
+</html>

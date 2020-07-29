@@ -1,0 +1,137 @@
+<html>
+<head>
+    <style type="text/css">
+        /* Basic CSS stylesheet for our playable */
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: black;
+        }
+
+        #log {
+            position: absolute;
+            background: black;
+            display: block;
+            color: white;
+            bottom: 0;
+            height: 30%;
+            width: 90%;
+            font-size: 2%;
+            padding: 5%;
+        }
+
+        #button {
+            display: block; 
+            position: absolute; 
+            top: 50%; 
+            left: 50%; 
+            transform: translateX(-50%) translateY(-50%)
+        }
+    </style>
+</head>
+<body>
+    <!-- container element for debug messages -->
+    <label id="log"></label>
+
+    <!-- main script of the playable -->
+    <script type="text/javascript">
+        /**
+         * Helper routine that simply displays a message in a text box.
+         */
+        function log( text ) {
+            document.getElementById( 'log' ).innerHTML += text + '<br />';
+        }
+
+        /**
+         * Main entrypoint for the playable. Please make sure that all the startup
+         * is performed strictly within this function.
+         */
+        function startGame() {
+            // to show off dynamic nature of the playable, we create a button
+            // via JS code here and append it to the body. In real world, a graphical engine,
+            // like Pixi.js or Three.js can used – in this case, it should perform scene
+            // setup and launch in here.
+            const body = document.body;
+            const button = document.createElement( 'button' );
+            button.innerText = 'Hello there!';
+            button.id = 'button';
+
+            // attach onclick handler to react to button press
+            button.onclick = function () { 
+                // log the message
+                log( 'CTA button clicked' );
+                // use unified interface to transition to the store. Specifics of each ad network
+                // will be automatically handled by Luna Playground.
+                Luna.Unity.Playable.InstallFullGame() 
+            };
+
+            // put the button inside the body
+            body.appendChild( button );
+            
+            // the variable to accumulate CSS properties driven by Playground fields.
+            let css = "";
+
+            // check that we are in PG before accessing Playground fields
+            if ( 'Luna' in window ) {
+                // set the text of the button to the value of ButtonTitle field of Settings class, defaulting to <NOT SET>
+                button.innerText = Luna.Unity.Playground.get( 'Settings', 'ButtonTitle', '<NOT SET>' );
+                // set the background of the button to the value of ButtonColor field of Settings class
+                css += '; background: ' + Luna.Unity.Playground.get( 'Settings', 'ButtonColor', 'red', 'rgba' );
+                // set the text color of the button to the value of ButtonTextColor field of Settings class
+                css += '; color: ' + Luna.Unity.Playground.get( 'Settings', 'ButtonTextColor', 'white', 'rgba' );
+                // set the width & height of the button to the value of ButtonSize field of Settings class
+                css += '; width: ' + Luna.Unity.Playground.get( 'Settings', 'ButtonSize', [ 200, 200 ] )[ 0 ] + 'px';
+                css += '; height: ' + Luna.Unity.Playground.get( 'Settings', 'ButtonSize', [ 200, 200 ] )[ 1 ] + 'px';
+            }
+
+            // update CSS in the button
+            button.style = css;
+        }
+
+        /**
+         * Subscribing to luna:build event – it is going to be fired right after 'load' event of the window.
+         */
+        window.addEventListener( "luna:build", function() { 
+            log( 'Playable is about to start' );
+        } );
+
+        /**
+         * Subscribing to luna:unmute event – the playable can play sounds once it is fired.
+         */
+        window.addEventListener( "luna:unmute", function() { 
+            log( 'Playable needs to be unmuted' );
+        } );
+
+        /**
+         * Subscribing to luna:mute event – the playable must mute all the sounds once it is fired.
+         */
+        window.addEventListener( "luna:mute", function() { 
+            log( 'Playable needs to be muted' );
+        } );
+
+        /**
+         * Subscribing to luna:pause event – the playable must pause rendering and sound playaback.
+         */
+        window.addEventListener( 'luna:pause', function () {
+            log( 'Playable needs to be paused' );
+        } );
+
+        /**
+         * Subscribing to luna:pause event – the playable must resume rendering and sound playaback.
+         */
+        window.addEventListener( 'luna:resume', function () {
+            log( 'Playable needs to be resumed' );
+        } );
+
+        // check if Luna is defined in global namespace
+        if ( 'Luna' in window ) {
+            // it is - nothing to do, the startGame() will be invoked when needed
+            log( 'window.Luna is set - startGame() will be called automatically' );
+        } else {
+            // it is not - probably a development build, invoke startGame() manually
+            startGame();
+        }
+    </script>
+</body>
+</html>

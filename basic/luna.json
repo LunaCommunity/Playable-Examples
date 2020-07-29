@@ -1,0 +1,34 @@
+{
+    "unity": {
+        "packages": {
+            "default": {
+                "applicationName": "",
+                "iosLink": "",
+                "androidLink": "",
+                "orientation": "unspecified",
+                "supportedLanguages": [
+                    "en"
+                ]
+            },
+
+            "ironsource": {
+                "appID": "",
+                "assetID": "",
+                "applicationGenre": "",
+                "versionName": "",
+                "apiType": 0,
+                "playableMode": 0,
+                "packageType": 0
+            },
+
+            "facebook": {
+                "assetID": "",
+                "packageType": 0
+            },
+  
+            "tiktok": {
+                "orientation": 0
+            }
+        }
+    }
+}
