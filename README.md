@@ -10,3 +10,6 @@ This folder contains the minimal Playground-compatible example that consists of 
 ## full/ folder
 This folder contains a fully featured example that includes a few configuration fields, the code that changes the apperance of the playable based on these values, and all mandatory callbacks' subscriptions (sound and pause state)ю
 
+## Implementation Details
+
+Please make sure your html file is named "source.html".
