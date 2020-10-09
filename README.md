@@ -12,4 +12,5 @@ This folder contains a fully featured example that includes a few configuration 
 
 ## Implementation Details
 
-Please make sure your html file is named "source.html".
+* Please make sure your html file is named "source.html".
+* Use the Luna API when you want to direct the user to the app store: `Luna.Unity.Playable.InstallFullGame()`
