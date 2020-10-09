@@ -21,7 +21,7 @@ This folder contains a fully featured example that includes a few configuration 
 ### Optional
 
 Subscribe to the following events if you wish to handle certain behaviours in the ad: 
-```
+
        /**
          * Subscribing to luna:build event – it is going to be fired right after 'load' event of the window.
          */
@@ -65,4 +65,4 @@ Subscribe to the following events if you wish to handle certain behaviours in th
             // it is not - probably a development build, invoke startGame() manually
             startGame();
         }
-        ```
+
