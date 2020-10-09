@@ -12,5 +12,57 @@ This folder contains a fully featured example that includes a few configuration 
 
 ## Implementation Details
 
-* Please make sure your html file is named "source.html".
-* Use the Luna API when you want to direct the user to the app store: `Luna.Unity.Playable.InstallFullGame()`
+### Required
+
+1. Please make sure your html file is named "source.html"
+2. Use the Luna API when you want to direct the user to the app store: `Luna.Unity.Playable.InstallFullGame()`
+3. Please make sure all the startup functionality is performed in the `startGame()` function
+
+### Optional
+
+Subscribe to the following events if you wish to handle certain behaviours in the ad: 
+```
+       /**
+         * Subscribing to luna:build event – it is going to be fired right after 'load' event of the window.
+         */
+        window.addEventListener( "luna:build", function() { 
+            log( 'Playable is about to start' );
+        } );
+
+        /**
+         * Subscribing to luna:unmute event – the playable can play sounds once it is fired.
+         */
+        window.addEventListener( "luna:unmute", function() { 
+            log( 'Playable needs to be unmuted' );
+        } );
+
+        /**
+         * Subscribing to luna:mute event – the playable must mute all the sounds once it is fired.
+         */
+        window.addEventListener( "luna:mute", function() { 
+            log( 'Playable needs to be muted' );
+        } );
+
+        /**
+         * Subscribing to luna:pause event – the playable must pause rendering and sound playaback.
+         */
+        window.addEventListener( 'luna:pause', function () {
+            log( 'Playable needs to be paused' );
+        } );
+
+        /**
+         * Subscribing to luna:pause event – the playable must resume rendering and sound playaback.
+         */
+        window.addEventListener( 'luna:resume', function () {
+            log( 'Playable needs to be resumed' );
+        } );
+
+        // check if Luna is defined in global namespace
+        if ( 'Luna' in window ) {
+            // it is - nothing to do, the startGame() will be invoked when needed
+            log( 'window.Luna is set - startGame() will be called automatically' );
+        } else {
+            // it is not - probably a development build, invoke startGame() manually
+            startGame();
+        }
+        ```
