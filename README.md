@@ -20,7 +20,93 @@ This folder contains a fully featured example that includes a few configuration 
 
 ### Optional
 
-Subscribe to the following events if you wish to handle certain behaviours in the ad: 
+1. Create a playground.json configuration file which contains the parameters in your game, for quick editing in Playground. 
+
+Example of types: 
+
+{
+    "title": "Example",
+    "icon": null,
+    "fields": {
+        "ShapeController": {
+            "shapeColor": {
+                "title": "shapeColor",
+                "type": "color",
+                "defaultValue": [
+                    1,
+                    0,
+                    0,
+                    1
+                ],
+                "section": "",
+                "order": 1,
+                "localization": 0,
+                "options": {}
+            },
+            "shape": {
+                "title": "shape",
+                "type": "enum",
+                "defaultValue": 1,
+                "section": "",
+                "order": 2,
+                "localization": 0,
+                "options": {
+                    "0": "CUBE",
+                    "1": "SPHERE",
+                    "2": "CYLINDER"
+                }
+            },
+            "someBoolean": {
+                "title": "someBoolean",
+                "type": "boolean",
+                "defaultValue": 1,
+                "section": "",
+                "order": 3,
+                "localization": 0,
+                "options": {}
+            },
+            "someInt": {
+                "title": "someInt",
+                "type": "int32",
+                "defaultValue": 100,
+                "section": "",
+                "order": 4,
+                "localization": 0,
+                "options": {}
+            },
+            "someVector3": {
+                "title": "someVector3",
+                "type": "vector3",
+                "defaultValue": [
+                    0,
+                    1,
+                    0
+                ],
+                "section": "",
+                "order": 5,
+                "localization": 0,
+                "options": {}
+            },
+            "someString": {
+                "title": "someString",
+                "type": "string",
+                "defaultValue": [
+                    "This is a string"
+                ],
+                "section": "",
+                "order": 6,
+                "localization": 0,
+                "options": {}
+            }
+        }
+    },
+    "assets": {},
+    "sections": []
+}
+
+
+
+2. Subscribe to the following events if you wish to handle certain behaviours in the ad: 
 
        /**
          * Subscribing to luna:build event – it is going to be fired right after 'load' event of the window.
