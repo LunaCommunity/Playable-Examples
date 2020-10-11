@@ -23,7 +23,7 @@ This folder contains a fully featured example that includes a few configuration 
 1. Create a playground.json configuration file which contains the parameters in your game, for quick editing in Playground. 
 
 Example of types: 
-
+```
 {
     "title": "Example",
     "icon": null,
@@ -103,7 +103,7 @@ Example of types:
     "assets": {},
     "sections": []
 }
-
+```
 
 
 2. Subscribe to the following events if you wish to handle certain behaviours in the ad: 
