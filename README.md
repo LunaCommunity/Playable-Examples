@@ -160,6 +160,6 @@ It is possible to use the Luna Analtyics events API for custom events in your pl
 ### Implementation Example
 
 ```js
-window.pi.logCustomEvent(LevelFailed, 1);
-window.pi.logCustomEvent(EndCardShown);
+window.pi.logCustomEvent("LevelFailed", 1);
+window.pi.logCustomEvent("EndCardShown");
 ```
