@@ -155,7 +155,7 @@ Example of types:
 
 ## Custom events
 
-It is possible to use the Luna Analtyics events API for custom events in your playable. Please see [here](https://docs.lunalabs.io/docs/playable/playable-insights/custom-events) for full documentation of the API.
+It is possible to use the Luna Analtyics events API for custom events in your playable. Please see [here](https://docs.lunalabs.io/docs/playable/playable-setup/analytics/custom-events) for full documentation of the API.
 
 ### Implementation Example
 
