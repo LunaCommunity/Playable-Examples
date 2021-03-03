@@ -17,6 +17,7 @@ This folder contains a fully featured example that includes a few configuration 
 1. Please make sure your html file is named "source.html"
 2. Use the Luna API when you want to direct the user to the app store: `Luna.Unity.Playable.InstallFullGame()`
 3. Please make sure all the startup functionality is performed in the `startGame()` function
+4. If you wish to run on Mintegral or Vungle, please also call the `Luna.Unity.LifeCycle.GameEnded()` event when the game is complete
 
 ### Optional
 
