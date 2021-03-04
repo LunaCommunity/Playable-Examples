@@ -23,7 +23,8 @@ This folder contains a fully featured example that includes a few configuration 
 
 ### Optional
 
-1. Create a playground.json configuration file which contains the parameters in your game, for quick editing in Playground. 
+1. Update the luna.json file with your app store URLs
+2. Create a playground.json configuration file which contains the parameters in your game, for quick editing in Playground. 
 
 Example of types: 
 ```
