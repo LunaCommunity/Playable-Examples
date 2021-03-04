@@ -111,7 +111,7 @@ Example of types:
 ```
 
 
-2. Subscribe to the following events if you wish to handle certain behaviours in the ad: 
+Exampls of events - Subscribe to the following events if you wish to handle certain behaviours in the ad: 
 
        /**
          * Subscribing to luna:build event – it is going to be fired right after 'load' event of the window.
